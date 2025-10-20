@@ -2,3 +2,32 @@
 /evaluation/env
 .env
 **/.env
+
+# Python cache
+__pycache__/
+**/__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# macOS
+.DS_Store
+**/.DS_Store
+
+# Neo4j credentials and instance files
+Neo4j-*.txt
+**/Neo4j-*.txt
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+**/.ipynb_checkpoints/
+
+# Virtual environments
+venv/
+env/
+ENV/
+.venv
+
+# IDE
+.vscode/
+.idea/

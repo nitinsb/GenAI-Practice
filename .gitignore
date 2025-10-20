@@ -1,2 +1,4 @@
 /.history
 /evaluation/env
+.env
+**/.env

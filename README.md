@@ -212,4 +212,9 @@ This project is for educational and practice purposes.
 
 **Last Updated:** October 20, 2025
 
+### Recent Updates
+- Added `googleADKandNeo4j/user_intent.ipynb`: Demonstrates user intent agent orchestration, session management, and multi-step conversation logic with Google ADK, Neo4j, and OpenAI GPT-4o.
+- Improved documentation and security practices for environment variables and credentials.
+- Enhanced agent evaluation and tracing workflows in `evaluation/`.
+
 **Note:** This is an active learning repository. New projects and experiments are added regularly.

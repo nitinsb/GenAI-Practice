@@ -28,6 +28,20 @@ env/
 ENV/
 .venv
 
+# MCP_anthropic specific
+MCP_anthropic/.env
+MCP_anthropic/papers/*/papers_info.json
+MCP_anthropic/mcp_project/.venv/
+MCP_anthropic/mcp_project/uv.lock
+MCP_anthropic/mcp_project/pyproject.toml
+MCP_anthropic/mcp_project/papers/*/papers_info.json
+
+# Ignore Jupyter Notebook checkpoints in all subfolders
+MCP_anthropic/**/.ipynb_checkpoints/
+
+# Ignore macOS system files in all subfolders
+MCP_anthropic/**/.DS_Store
+
 # IDE
 .vscode/
 .idea/

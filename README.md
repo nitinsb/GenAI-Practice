@@ -22,6 +22,19 @@ GenAI-Practice/
 │   ├── helper.py
 │   └── README.md           # Detailed project documentation
 │
+├── MCP_anthropic/          # Anthropic Claude with Model Context Protocol
+│   ├── L3.ipynb            # Tool use and chatbot implementation
+│   ├── mcp_server.ipynb    # MCP server building guide
+│   ├── mcp_client.ipynb    # MCP client implementation
+│   ├── mcp_project/        # MCP server and client project
+│   │   ├── research_server.py
+│   │   ├── mcp_chatbot.py
+│   │   ├── pyproject.toml
+│   │   └── papers/
+│   ├── requirements.txt    # Project dependencies
+│   ├── README.md           # Setup and usage guide
+│   └── papers/             # Generated paper data
+│
 ├── Pipeline/               # Pipeline implementations
 │   ├── C1_W1.pdf
 │   ├── C1_W2.pdf
@@ -58,7 +71,40 @@ jupyter notebook googleadk.ipynb
 
 See [googleADKandNeo4j/README.md](./googleADKandNeo4j/README.md) for detailed setup instructions.
 
-### 2. Agent Evaluation Framework
+### 2. Anthropic Claude with Model Context Protocol (MCP)
+**Location:** `MCP_anthropic/`
+
+Building intelligent chatbots with Anthropic Claude and MCP:
+- **Claude Tool Use** - Claude models making decisions about tool use
+- **MCP Server** - Building custom MCP servers with FastMCP
+- **MCP Client** - Creating MCP clients to connect to servers
+- **arXiv Integration** - Tool examples for searching academic papers
+- **Async Communication** - Client-server architecture with async/await
+
+**Key Files:**
+- `L3.ipynb` - Tool use fundamentals with Claude
+- `mcp_server.ipynb` - Building MCP servers using FastMCP
+- `mcp_client.ipynb` - Creating MCP clients and chatbots
+- `mcp_project/research_server.py` - MCP server implementation
+- `mcp_project/mcp_chatbot.py` - MCP-based chatbot class
+
+**Key Features:**
+- Async tool invocation pattern
+- arXiv paper search and retrieval
+- Server-client communication pattern
+- Tool schema generation
+- Interactive chatbot loop
+
+**Quick Start:**
+```bash
+cd MCP_anthropic/mcp_project
+uv add anthropic python-dotenv nest_asyncio
+uv run mcp_chatbot.py
+```
+
+See [MCP_anthropic/README.md](./MCP_anthropic/README.md) for detailed setup instructions.
+
+### 3. Agent Evaluation Framework
 **Location:** `evaluation/`
 
 Tools and notebooks for:
@@ -74,7 +120,7 @@ Tools and notebooks for:
 - `tracing_Your_agents.ipynb` - Agent debugging and monitoring
 - `L9.ipynb`, `L11.ipynb` - Learning modules
 
-### 3. RAG Implementation
+### 4. RAG Implementation
 **Location:** `RAG/`
 
 Multimodal Retrieval Augmented Generation:
@@ -104,6 +150,9 @@ Multimodal Retrieval Augmented Generation:
 - `pandas` - Data manipulation
 - `numpy` - Numerical computing
 - `opentelemetry` - Observability and tracing
+- `anthropic` - Anthropic Claude API
+- `mcp` - Model Context Protocol
+- `arxiv` - arXiv paper search
 
 ## ⚙️ Setup
 
@@ -169,6 +218,8 @@ If you accidentally committed sensitive data:
 - Agent evaluation and tracing
 - Skill-based routing
 - Multimodal RAG systems
+- Anthropic Claude tool use
+- Model Context Protocol (MCP) servers and clients
 
 ## 🎯 Use Cases
 
@@ -213,6 +264,10 @@ This project is for educational and practice purposes.
 **Last Updated:** October 20, 2025
 
 ### Recent Updates
+- Added `MCP_anthropic/` directory with Anthropic Claude and Model Context Protocol implementations
+- Implemented `mcp_server.ipynb`: FastMCP server building patterns
+- Implemented `mcp_client.ipynb`: MCP client and chatbot class
+- Added `mcp_project/research_server.py` and `mcp_project/mcp_chatbot.py`
 - Added `googleADKandNeo4j/user_intent.ipynb`: Demonstrates user intent agent orchestration, session management, and multi-step conversation logic with Google ADK, Neo4j, and OpenAI GPT-4o.
 - Improved documentation and security practices for environment variables and credentials.
 - Enhanced agent evaluation and tracing workflows in `evaluation/`.

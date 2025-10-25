@@ -33,7 +33,6 @@ MCP_anthropic/.env
 MCP_anthropic/papers/*/papers_info.json
 MCP_anthropic/mcp_project/.venv/
 MCP_anthropic/mcp_project/uv.lock
-MCP_anthropic/mcp_project/pyproject.toml
 MCP_anthropic/mcp_project/papers/*/papers_info.json
 
 # Ignore Jupyter Notebook checkpoints in all subfolders
@@ -45,3 +44,24 @@ MCP_anthropic/**/.DS_Store
 # IDE
 .vscode/
 .idea/
+
+# Build and dist
+build/
+dist/
+*.egg-info/
+*.egg
+
+# Python environment and cache
+*.pdb
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Editor temp files
+*.swp
+*.swo
+*~
+.DS_Store
+
+# OS specific
+Thumbs.db

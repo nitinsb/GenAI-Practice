@@ -65,3 +65,13 @@ htmlcov/
 
 # OS specific
 Thumbs.db
+
+# AgenticAI project specific
+AgenticAI/**/.DS_Store
+AgenticAI/**/__pycache__/
+AgenticAI/**/*.pyc
+AgenticAI/**/.ipynb_checkpoints/
+AgenticAI/refraction/*.db
+AgenticAI/refraction/*.csv
+AgenticAI/refraction/*.png
+AgenticAI/reserch_Agent/**/*.pyc

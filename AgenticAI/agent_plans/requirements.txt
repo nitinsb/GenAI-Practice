@@ -1,0 +1,11 @@
+aisuite>=0.1.12
+anthropic>=0.71.0
+openai>=1.35.0
+python-dotenv>=1.0.0
+requests>=2.31.0
+pillow>=10.0.0
+tavily-python>=0.3.0
+tinydb>=4.8.0
+pydantic>=2.0.0
+IPython>=8.0.0
+markdown>=3.5.0

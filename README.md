@@ -1,12 +1,49 @@
 # GenAI-Practice
 
-A collection of practical implementations and experiments with Generative AI technologies, including agent development, RAG systems, and evaluation frameworks.
+A comprehensive collection of practical implementations and experiments with Generative AI technologies, including advanced agent development, multi-tier memory systems, RAG implementations, and agent evaluation frameworks.
+
+**Repository Owner:** [nitinsb](https://github.com/nitinsb)
 
 ## 📁 Project Structure
 
 ```
 GenAI-Practice/
-├── evaluation/              # Agent evaluation and building frameworks
+├── MemoryInLangGraph/           # Multi-tier memory systems with LangGraph
+│   ├── README.md                # Parent documentation and learning guide
+│   ├── Baseline/                # Email triage foundation
+│   │   ├── Baseline_agent.ipynb
+│   │   ├── prompts.py
+│   │   ├── schemas.py
+│   │   ├── utils.py
+│   │   ├── examples.py
+│   │   ├── requirements.txt
+│   │   └── README.md
+│   ├── SemanticMemory/          # Context-aware with semantic search
+│   │   ├── Semantic_memory_agent.ipynb
+│   │   ├── prompts.py
+│   │   ├── schemas.py
+│   │   ├── utils.py
+│   │   ├── examples.py
+│   │   ├── requirements.txt
+│   │   └── README.md
+│   ├── episodicMemory/          # Few-shot learning with examples
+│   │   ├── epsiodicMemoryAgent.ipynb
+│   │   ├── prompts.py
+│   │   ├── schemas.py
+│   │   ├── utils.py
+│   │   ├── examples.py
+│   │   ├── requirements.txt
+│   │   └── README.md
+│   └── ProceduralMemory/        # Learned workflows and optimization
+│       ├── ProceduralMemoryAgents.ipynb
+│       ├── prompts.py
+│       ├── schemas.py
+│       ├── utils.py
+│       ├── examples.py
+│       ├── requirements.txt
+│       └── README.md
+│
+├── evaluation/                  # Agent evaluation and building frameworks
 │   ├── Building_agents.ipynb
 │   ├── skill_evalutions_for_router.ipynb
 │   ├── tracing_Your_agents.ipynb
@@ -15,38 +52,80 @@ GenAI-Practice/
 │   └── data/
 │       └── Store_Sales_Price_Elasticity_Promotions_Data.parquet
 │
-├── googleADKandNeo4j/      # Google ADK with Neo4j integration
-│   ├── googleadk.ipynb     # Main implementation notebook
-│   ├── neo4j_for_adk.py   # Neo4j integration module
-│   ├── requirements.txt    # Project dependencies
+├── googleADKandNeo4j/           # Google ADK with Neo4j integration
+│   ├── googleadk.ipynb          # Main implementation notebook
+│   ├── neo4j_for_adk.py         # Neo4j integration module
+│   ├── requirements.txt         # Project dependencies
 │   ├── helper.py
-│   └── README.md           # Detailed project documentation
+│   ├── README.md                # Detailed project documentation
+│   └── data/                    # CSV files for import
 │
-├── MCP_anthropic/          # Anthropic Claude with Model Context Protocol
-│   ├── L3.ipynb            # Tool use and chatbot implementation
-│   ├── mcp_server.ipynb    # MCP server building guide
-│   ├── mcp_client.ipynb    # MCP client implementation
-│   ├── mcp_project/        # MCP server and client project
-│   │   ├── research_server.py
-│   │   ├── mcp_chatbot.py
-│   │   ├── pyproject.toml
-│   │   └── papers/
-│   ├── requirements.txt    # Project dependencies
-│   ├── README.md           # Setup and usage guide
-│   └── papers/             # Generated paper data
-│
-├── Pipeline/               # Pipeline implementations
+├── Pipeline/                    # Pipeline implementations
 │   ├── C1_W1.pdf
 │   ├── C1_W2.pdf
 │   └── C1_W3.pdf
 │
-└── RAG/                    # Retrieval Augmented Generation
+└── RAG/                         # Retrieval Augmented Generation
     └── L1_Overview_of_Multimodality.ipynb
 ```
 
 ## 🚀 Featured Projects
 
-### 1. Google ADK with Neo4j Integration
+### 1. MemoryInLangGraph - Multi-Tier Memory Systems
+**Location:** `MemoryInLangGraph/`
+
+A comprehensive exploration of memory systems in LangGraph-based agents, demonstrating how agents learn and improve over time through different memory paradigms.
+
+**Four-Module Progression:**
+
+1. **Baseline** - Email triage foundation
+   - Basic email classification (respond, ignore, notify)
+   - LangGraph state management fundamentals
+   - Simple ReAct agents with tool use
+   - Tools: write_email, schedule_meeting, check_calendar_availability
+
+2. **SemanticMemory** - Context-aware intelligence
+   - Semantic memory for storing facts about contacts and topics
+   - InMemoryStore with vector embeddings (text-embedding-3-small)
+   - Memory search and management tools (langmem)
+   - User-scoped memory namespaces
+
+3. **episodicMemory** - Few-shot learning
+   - Episodic memory for storing labeled examples
+   - Few-shot learning with in-context learning
+   - Vector similarity search for example retrieval
+   - User-specific classifier training and personalization
+
+4. **ProceduralMemory** - Learned workflows
+   - Procedural memory for learned action sequences
+   - Workflow optimization and skill development
+   - Performance metrics and effectiveness tracking
+   - Context-aware action planning
+
+**Key Features:**
+- Three-tier memory architecture (Episodic + Semantic + Procedural)
+- User-scoped memory isolation for multi-user systems
+- Vector embeddings for similarity-based retrieval
+- Few-shot learning for classification improvement
+- Procedure tracking and optimization
+- Comprehensive documentation at each level
+
+**Quick Start:**
+```bash
+cd MemoryInLangGraph
+# Start with Baseline
+jupyter notebook Baseline/Baseline_agent.ipynb
+# Progress through modules
+jupyter notebook SemanticMemory/Semantic_memory_agent.ipynb
+jupyter notebook episodicMemory/epsiodicMemoryAgent.ipynb
+jupyter notebook ProceduralMemory/ProceduralMemoryAgents.ipynb
+```
+
+See [MemoryInLangGraph/README.md](./MemoryInLangGraph/README.md) for comprehensive learning guide.
+
+---
+
+### 2. Google ADK with Neo4j Integration
 **Location:** `googleADKandNeo4j/`
 
 A comprehensive implementation combining:
@@ -71,7 +150,9 @@ jupyter notebook googleadk.ipynb
 
 See [googleADKandNeo4j/README.md](./googleADKandNeo4j/README.md) for detailed setup instructions.
 
-### 2. Anthropic Claude with Model Context Protocol (MCP)
+---
+
+### 3. Anthropic Claude with Model Context Protocol (MCP)
 **Location:** `MCP_anthropic/`
 
 Building intelligent chatbots with Anthropic Claude and MCP:
@@ -104,7 +185,9 @@ uv run mcp_chatbot.py
 
 See [MCP_anthropic/README.md](./MCP_anthropic/README.md) for detailed setup instructions.
 
-### 3. Agent Evaluation Framework
+---
+
+### 4. Agent Evaluation Framework
 **Location:** `evaluation/`
 
 Tools and notebooks for:
@@ -120,7 +203,9 @@ Tools and notebooks for:
 - `tracing_Your_agents.ipynb` - Agent debugging and monitoring
 - `L9.ipynb`, `L11.ipynb` - Learning modules
 
-### 4. RAG Implementation
+---
+
+### 5. RAG Implementation
 **Location:** `RAG/`
 
 Multimodal Retrieval Augmented Generation:
@@ -135,24 +220,37 @@ Multimodal Retrieval Augmented Generation:
 - **Jupyter Notebooks** - Interactive development environment
 - **Conda** - Environment and package management
 
-### AI/ML Frameworks
-- **Google ADK 1.5.0** - Agent Development Kit
-- **OpenAI GPT-4o** - Large Language Model
-- **LiteLLM 1.73.6** - Multi-provider LLM interface
+### AI/ML Frameworks & LLMs
+- **LangGraph 0.2.72** - Graph-based agent orchestration
+- **LangChain 0.3.18** - LLM framework and tools
+- **LangMem 0.0.8** - Memory management for agents
+- **OpenAI GPT-4o & GPT-4o-mini** - Advanced language models
+- **Anthropic Claude 3.5 Sonnet** - Alternative LLM provider
+- **Google ADK** - Agent Development Kit
+- **LiteLLM** - Multi-provider LLM interface
 - **Arize Phoenix** - Agent tracing and evaluation
 
-### Databases
+### Databases & Storage
 - **Neo4j 5.28.1** - Graph database
 - **Neo4j Aura** - Cloud-hosted Neo4j
+- **InMemoryStore** - Vector-based memory storage (LangGraph)
+
+### Memory & Embeddings
+- **OpenAI Embeddings (text-embedding-3-small)** - Vector embeddings
+- **Langmem** - Episodic, semantic, and procedural memory tools
+- **Vector Similarity Search** - Semantic retrieval
 
 ### Supporting Libraries
 - `python-dotenv` - Environment variable management
-- `pandas` - Data manipulation
+- `pandas` - Data manipulation and analysis
 - `numpy` - Numerical computing
+- `pydantic` - Data validation and serialization
 - `opentelemetry` - Observability and tracing
 - `anthropic` - Anthropic Claude API
 - `mcp` - Model Context Protocol
 - `arxiv` - arXiv paper search
+- `tavily-python` - Web search integration
+- `requests` - HTTP client library
 
 ## ⚙️ Setup
 
@@ -211,7 +309,15 @@ If you accidentally committed sensitive data:
 
 ## 📚 Learning Resources
 
-### Completed Modules
+### Module Structure & Progression
+
+**MemoryInLangGraph (Newest - Multi-Tier Memory Systems):**
+1. Baseline - Email triage foundation
+2. SemanticMemory - Context-aware intelligence
+3. episodicMemory - Few-shot learning & personalization
+4. ProceduralMemory - Learned workflows & optimization
+
+**Other Completed Modules:**
 - Agent building fundamentals
 - Neo4j graph database integration
 - LLM integration patterns
@@ -220,6 +326,21 @@ If you accidentally committed sensitive data:
 - Multimodal RAG systems
 - Anthropic Claude tool use
 - Model Context Protocol (MCP) servers and clients
+
+### Key Learning Outcomes
+
+After completing this repository, you'll understand:
+- ✅ How to build agentic email systems with LangGraph
+- ✅ How different memory types enhance AI agents
+- ✅ How to implement semantic memory with embeddings
+- ✅ How few-shot learning improves classification
+- ✅ How to track and optimize learned procedures
+- ✅ How to build user-scoped, personalized AI systems
+- ✅ How to combine multiple memory systems effectively
+- ✅ Best practices for production agent deployment
+- ✅ Multi-provider LLM integration
+- ✅ Graph database integration with AI agents
+- ✅ Agent evaluation and monitoring techniques
 
 ## 🎯 Use Cases
 
@@ -261,15 +382,41 @@ This project is for educational and practice purposes.
 
 ---
 
-**Last Updated:** October 20, 2025
+**Last Updated:** November 6, 2025
 
-### Recent Updates
+### Recent Updates (November 2025)
+
+#### Major: MemoryInLangGraph Module Launch
+- **New:** Complete four-module progression for multi-tier memory systems
+  - `Baseline/` - Email triage foundation
+  - `SemanticMemory/` - Semantic memory with embeddings
+  - `episodicMemory/` - Few-shot learning from examples
+  - `ProceduralMemory/` - Learned workflows and optimization
+- Added comprehensive parent README with learning guide
+- Each module includes detailed documentation, example notebooks, and supporting utilities
+- Demonstrates episodic, semantic, and procedural memory architectures
+- Shows user-scoped memory isolation for multi-user systems
+- Includes performance tracking and procedure optimization
+
+#### Documentation Improvements
+- Updated main README with full project overview
+- Added MemoryInLangGraph learning progression guide
+- Created module-specific READMEs with usage examples
+- Documented three-tier memory integration patterns
+- Added troubleshooting and best practices guides
+
+#### Technology Updates
+- Integrated **LangMem 0.0.8** for memory tool creation
+- Integrated **LangGraph InMemoryStore** for vector-based storage
+- Added **OpenAI text-embedding-3-small** for semantic similarity search
+- Configured **GPT-4o-mini** for fast classification
+- Configured **GPT-4o** for full reasoning in response generation
+
+#### Previous Updates
 - Added `MCP_anthropic/` directory with Anthropic Claude and Model Context Protocol implementations
 - Implemented `mcp_server.ipynb`: FastMCP server building patterns
 - Implemented `mcp_client.ipynb`: MCP client and chatbot class
-- Added `mcp_project/research_server.py` and `mcp_project/mcp_chatbot.py`
-- Added `googleADKandNeo4j/user_intent.ipynb`: Demonstrates user intent agent orchestration, session management, and multi-step conversation logic with Google ADK, Neo4j, and OpenAI GPT-4o.
-- Improved documentation and security practices for environment variables and credentials.
-- Enhanced agent evaluation and tracing workflows in `evaluation/`.
+- Added `googleADKandNeo4j/user_intent.ipynb`: User intent agent orchestration with Google ADK, Neo4j, and OpenAI GPT-4o
+- Enhanced agent evaluation and tracing workflows in `evaluation/`
 
-**Note:** This is an active learning repository. New projects and experiments are added regularly.
+**Note:** This is an active learning repository. New projects and experiments are added regularly as learning progresses.

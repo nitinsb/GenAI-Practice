@@ -75,3 +75,26 @@ AgenticAI/refraction/*.db
 AgenticAI/refraction/*.csv
 AgenticAI/refraction/*.png
 AgenticAI/reserch_Agent/**/*.pyc
+
+# General additions for repo cleanliness
+# Virtual env used for local studies
+.venv-studies/
+
+# Data and large binary files (avoid tracking raw datasets)
+data/
+Finetuning/**/lamini_docs.jsonl
+Finetuning/**/*_processed.jsonl
+*.parquet
+*.csv
+*.ndjson
+
+# Notebook outputs and large images
+*.ipynb_checkpoints/
+*.png
+*.jpg
+*.jpeg
+
+# Model checkpoints and training outputs
+checkpoints/
+outputs/
+output_dir/

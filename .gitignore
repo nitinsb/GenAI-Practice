@@ -102,3 +102,30 @@ output_dir/
 # Ignore local retrive_model artifacts (embeddings, temp text) which can be large
 RAG_Architecture/Retrive_model/embeddings.joblib
 RAG_Architecture/Retrive_model/large_text.txt
+# Weaviate embedded persistence folder(s)
+.collections/
+RAG_Architecture/**/.collections/
+
+# Local Flask helper/start files
+.tmp_start_flask.py
+
+# Logs, temporary files, caches
+*.log
+.mypy_cache/
+request_logs/
+
+# Python version managers
+.python-version
+
+# Conda environment directories
+envs/
+conda_env/
+
+# SQLite / db files
+*.sqlite
+*.db
+
+# Misc
+.venv/
+.env.local
+.env.*.local

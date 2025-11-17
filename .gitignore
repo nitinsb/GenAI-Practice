@@ -163,3 +163,9 @@ datasets/
 transformers_cache/
 hf_cache/
 
+# Joblib dataset files (common in this repo)
+*.joblib
+**/*.joblib
+RAG_Architecture/**/data.joblib
+RAG_Architecture/**/embeddings.joblib
+

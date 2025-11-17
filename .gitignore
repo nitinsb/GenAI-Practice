@@ -129,3 +129,37 @@ conda_env/
 .venv/
 .env.local
 .env.*.local
+
+# Large model files and archives
+*.pt
+*.pth
+*.ckpt
+*.safetensors
+*.bin
+*.model
+*.h5
+*.hdf5
+
+# Compressed archives (often checkpoints or packaged models)
+*.tar.gz
+*.tar
+*.zip
+*.gz
+
+# Common dataset and model formats
+*.jsonl
+*.ndjson
+*.parquet
+
+# Model and dataset directories
+models/
+model_checkpoints/
+checkpoints/
+raw_data/
+datasets/
+
+# Caches (huggingface, pip, general)
+.cache/
+transformers_cache/
+hf_cache/
+

@@ -98,3 +98,7 @@ Finetuning/**/*_processed.jsonl
 checkpoints/
 outputs/
 output_dir/
+
+# Ignore local retrive_model artifacts (embeddings, temp text) which can be large
+RAG_Architecture/Retrive_model/embeddings.joblib
+RAG_Architecture/Retrive_model/large_text.txt

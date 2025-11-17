@@ -420,3 +420,54 @@ This project is for educational and practice purposes.
 - Enhanced agent evaluation and tracing workflows in `evaluation/`
 
 **Note:** This is an active learning repository. New projects and experiments are added regularly as learning progresses.
+
+---
+## **Workspace Snapshot & Reproducibility (Nov 16, 2025)**
+
+- **Large dataset files removed from Git index (kept locally):**
+   - `Finetuning/DataPrep/lamini_docs.jsonl`
+   - `Finetuning/whereItFits/lamini_docs.jsonl`
+   - `Finetuning/whereItFits/lamini_docs_processed.jsonl`
+   - Recommendation: use `git lfs` or external storage for large datasets; avoid keeping large files in the Git history.
+
+- **Environment & dependency captures:**
+   - Full frozen venv export: `requirements-venv-studies.txt` (created from `.venv-studies`).
+   - Minimal top-level `requirements.txt` with primary packages for quick install.
+   - `tf-keras` present in `.venv-studies` to address Keras/Transformers compatibility (tensorflow==2.20.0, keras==3.12.0).
+
+- **Conda environment for notebooks (`rag`):**
+   - Conda env `rag` (Python 3.10) created with core packages: `sentence-transformers`, `transformers`, `torch` (macOS CPU wheel), `faiss-cpu`, `pandas`, `jupyter`, `ipykernel`, `ipywidgets`, `jsonlines`, `huggingface-hub`, `tokenizers`.
+   - Jupyter kernel registered as `Python (rag)` (kernel files at `~/Library/Jupyter/kernels/rag`).
+
+- **How to recreate the `rag` env (example):**
+
+```bash
+conda create -n rag python=3.10 -y
+conda activate rag
+
+# Install core packages (adjust versions as needed for your platform)
+pip install sentence-transformers transformers torch torchvision torchaudio --extra-index-url https://download.pytorch.org/whl/cpu
+pip install faiss-cpu pandas jupyter ipykernel ipywidgets jsonlines huggingface-hub tokenizers
+
+# Register kernel
+python -m ipykernel install --user --name rag --display-name "Python (rag)"
+```
+
+- **Important notebooks & modules:**
+   - `RAG_Architecture/Retrive_model/vector_embeding.ipynb` — embeddings & input size experiments
+   - `googleADKandNeo4j/googleadk.ipynb` — Google ADK + Neo4j examples and `neo4j_for_adk.py`
+   - `evaluation/` — agent-building and tracing notebooks
+
+- **Model loading guidance (SentenceTransformer):**
+   - Preferred (download from HF cache): `SentenceTransformer("BAAI/bge-base-en-v1.5")`.
+   - Local model directory (if you manage local model files): set `MODELS` env var to the parent directory and load via `SentenceTransformer(os.path.join(os.environ['MODELS'], model_name))`.
+   - After installing or upgrading packages (e.g., `tf-keras`), restart the Jupyter kernel to pick up changes.
+
+- **Security & housekeeping:**
+   - Keep `.env` out of source control (it's already in `.gitignore`).
+   - If secrets were committed accidentally, rotate them and use history rewrite tools (BFG or git filter-branch) carefully.
+   - For large model files or binaries, prefer `git lfs` or external artifact storage.
+
+---
+
+**Last Workspace Sync:** November 16, 2025 — `requirements-venv-studies.txt` and `requirements.txt` added; Conda `rag` created and kernel registered; large dataset files untracked from Git index.

@@ -383,15 +383,20 @@ This project is for educational and practice purposes.
 ---
 
 **Last Updated:** November 6, 2025
+**Last Updated:** November 18, 2025
 
 ### Recent Updates (November 2025)
 
-#### Major: MemoryInLangGraph Module Launch
+#### Repo hygiene and large-file ignores
+- **Updated:** `.gitignore` to exclude common large model and dataset files (e.g., `*.pt`, `*.pth`, `*.safetensors`, `*.joblib`, `*.parquet`) and project-specific persistence directories (e.g., `.collections`).
+- **Why:** Prevent accidental commits of large binary/model/data files and keep the repo lightweight for collaborators.
+
+#### Major: MemoryInLangGraph Module Launch (earlier in November)
 - **New:** Complete four-module progression for multi-tier memory systems
-  - `Baseline/` - Email triage foundation
-  - `SemanticMemory/` - Semantic memory with embeddings
-  - `episodicMemory/` - Few-shot learning from examples
-  - `ProceduralMemory/` - Learned workflows and optimization
+   - `Baseline/` - Email triage foundation
+   - `SemanticMemory/` - Semantic memory with embeddings
+   - `episodicMemory/` - Few-shot learning from examples
+   - `ProceduralMemory/` - Learned workflows and optimization
 - Added comprehensive parent README with learning guide
 - Each module includes detailed documentation, example notebooks, and supporting utilities
 - Demonstrates episodic, semantic, and procedural memory architectures

@@ -169,3 +169,22 @@ hf_cache/
 RAG_Architecture/**/data.joblib
 RAG_Architecture/**/embeddings.joblib
 
+
+# Redisc-caching project-specific ignores
+Redisc-caching/.env
+Redisc-caching/.env.*
+Redisc-caching/docker-compose.override.yml
+Redisc-caching/docker-compose.*.yml
+Redisc-caching/redis_data/
+Redisc-caching/*.pyc
+Redisc-caching/**/__pycache__/
+Redisc-caching/**/.ipynb_checkpoints/
+Redisc-caching/**/output.ipynb
+Redisc-caching/**/executed-*.ipynb
+Redisc-caching/first-semantic_cache/.venv/
+Redisc-caching/first-semantic_cache/.ipynb_checkpoints/
+Redisc-caching/first-semantic_cache/__pycache__/
+Redisc-caching/first-semantic_cache/*.log
+Redisc-caching/data/*.csv
+Redisc-caching/data/*.parquet
+

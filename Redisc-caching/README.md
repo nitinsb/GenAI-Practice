@@ -180,3 +180,79 @@ If you'd like, I can:
 - Execute one notebook headless here to verify the end-to-end flow (will run in the `redis` env and may take time).
 
 Created by the repository helper script — feel free to edit or expand with project-specific notes.
+
+---
+
+## Evaluation Metrics (Precision / Recall / F1 / WCL)
+
+This project includes helper classes to evaluate cache effectiveness (`CacheEvaluator`) and performance (`PerfEval`) in `Redisc-caching/first-semantic_cache/cache/evals.py`.
+
+Below are the common metrics used and how you can compute or read them from the code.
+
+- **Cache Hit Rate**: fraction of queries that returned a cached result (hit) vs total queries.
+	- Formula: cache_hit_rate = (TP + FP) / (TP + FP + FN + TN)
+	- In code: `CacheEvaluator.get_metrics()` returns `cache_hit_rate`.
+
+- **Precision**: fraction of returned cache matches that are correct (true positives among returned positives).
+	- Formula: precision = TP / (TP + FP)  (defaults to 1 if denominator is 0 in the code)
+	- In code: `CacheEvaluator.get_metrics()` returns `precision`.
+
+- **Recall**: fraction of actual positives that were returned by the cache (true positives among actual positives).
+	- Formula: recall = TP / (TP + FN)  (defaults to 1 if denominator is 0 in the code)
+	- In code: `CacheEvaluator.get_metrics()` returns `recall`.
+
+- **F1 Score**: harmonic mean of precision and recall, giving a single balanced metric.
+	- Formula used in code: f1_score = 2 * TP / (2 * TP + FP + FN)
+	- In code: `CacheEvaluator.get_metrics()` returns `f1_score`.
+
+- **Utility**: a combined metric provided in the code that is the harmonic mean of precision and cache_hit_rate.
+	- In code: `utility` = harmonic_mean(precision, cache_hit_rate)
+
+Wording note: In this codebase `TP, FP, TN, FN` are computed using the cache results and (optionally) a ground-truth label set. The helper `CacheEvaluator.report_metrics()` will render a small panel showing these values and a confusion matrix.
+
+WCL (Weighted Cost / Loss) — practical recipe
+- The repository doesn't implement a metric literally named `WCL`, but you can compute a sensible weighted cost metric from data the repo already provides (costs from `PerfEval` and hit/miss rates from `CacheEvaluator`).
+
+One practical WCL definition (Weighted Cost per Query):
+
+WCL = cache_miss_rate * avg_llm_cost_per_query + cache_hit_rate * avg_cache_cost_per_query
+
+Where:
+- `cache_miss_rate = 1 - cache_hit_rate`
+- `avg_llm_cost_per_query` can be obtained from `PerfEval.get_costs()` (e.g. `avg_cost_per_query` or `avg_cost_per_call`)
+- `avg_cache_cost_per_query` is typically very small (cost of cache lookup) — set it to a small constant or estimate if you instrument cache costs.
+
+Example code snippet (use inside a notebook or script after running an experiment):
+
+```python
+from cache.evals import CacheEvaluator, PerfEval
+
+# Assume you have `true_labels` (list of booleans) and `cache_results` from your wrapper
+ce = CacheEvaluator(true_labels, cache_results)
+metrics = ce.get_metrics()
+cache_hit_rate = metrics['cache_hit_rate']
+
+# If you measured LLM calls with PerfEval
+perf = PerfEval()
+# ... run experiment and call perf.record_llm_call(...) during LLM calls ...
+costs = perf.get_costs()
+avg_llm_cost = costs.get('avg_cost_per_query', costs.get('avg_cost_per_call', 0.0))
+
+# Set a small cache cost per query (estimate)
+avg_cache_cost = 0.00001  # USD, example value
+
+cache_miss_rate = 1.0 - cache_hit_rate
+WCL = cache_miss_rate * avg_llm_cost + cache_hit_rate * avg_cache_cost
+print(f"WCL (est.): ${WCL:.6f} per query")
+
+print('Precision:', metrics['precision'])
+print('Recall:', metrics['recall'])
+print('F1:', metrics['f1_score'])
+```
+
+Notes and pointers
+- File: `Redisc-caching/first-semantic_cache/cache/evals.py` — see `CacheEvaluator` and `PerfEval` implementations for exact formulas and plotting utilities.
+- The notebooks in `first-semantic_cache` already use these helpers (`CacheEvaluator`, `PerfEval`, and the `LLMEvaluator` wrapper) — see `cache_effectiveness.ipynb` and `Enhancing_effectiveness.ipynb` for examples.
+
+If you prefer a different definition of WCL (for example weighting latency vs cost), tell me the formula and I will add it and a short example calculation to this README.
+
